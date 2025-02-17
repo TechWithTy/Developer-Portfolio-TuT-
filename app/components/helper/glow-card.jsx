@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
+import { personalData } from "@/utils/data/personal-data";
 
-const GlowCard = ({ children , identifier}) => {
+const GlowCard = ({ children, identifier }) => {
   useEffect(() => {
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
@@ -26,9 +27,9 @@ const GlowCard = ({ children , identifier}) => {
           event?.y > CARD_BOUNDS.top - CONFIG.proximity &&
           event?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity
         ) {
-          CARD.style.setProperty('--active', 1);
+          CARD.style.setProperty("--active", 1);
         } else {
-          CARD.style.setProperty('--active', CONFIG.opacity);
+          CARD.style.setProperty("--active", CONFIG.opacity);
         }
 
         const CARD_CENTER = [
@@ -43,34 +44,44 @@ const GlowCard = ({ children , identifier}) => {
 
         ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
 
-        CARD.style.setProperty('--start', ANGLE + 90);
+        CARD.style.setProperty("--start", ANGLE + 90);
       }
     };
 
-    document.body.addEventListener('pointermove', UPDATE);
+    document.body.addEventListener("pointermove", UPDATE);
 
     const RESTYLE = () => {
-      CONTAINER.style.setProperty('--gap', CONFIG.gap);
-      CONTAINER.style.setProperty('--blur', CONFIG.blur);
-      CONTAINER.style.setProperty('--spread', CONFIG.spread);
+      CONTAINER.style.setProperty("--gap", CONFIG.gap);
+      CONTAINER.style.setProperty("--blur", CONFIG.blur);
+      CONTAINER.style.setProperty("--spread", CONFIG.spread);
       CONTAINER.style.setProperty(
-        '--direction',
-        CONFIG.vertical ? 'column' : 'row'
+        "--direction",
+        CONFIG.vertical ? "column" : "row"
       );
     };
 
     RESTYLE();
     UPDATE();
 
-    // Cleanup event listener
     return () => {
-      document.body.removeEventListener('pointermove', UPDATE);
+      document.body.removeEventListener("pointermove", UPDATE);
     };
   }, [identifier]);
 
+  // Function to open the resume in a new tab
+  const handleCardClick = () => {
+    if (personalData.resume) {
+      window.open(personalData.resume, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <div className={`glow-container-${identifier} glow-container`}>
-      <article className={`glow-card glow-card-${identifier} h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full`}>
+      <article
+        className={`glow-card glow-card-${identifier} h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full 
+        flex flex-col items-center justify-center text-center p-6`}
+        onClick={handleCardClick} // Open resume on click
+      >
         <div className="glows"></div>
         {children}
       </article>

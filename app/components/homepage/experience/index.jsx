@@ -10,18 +10,25 @@ import GlowCard from "../../helper/glow-card";
 
 function Experience() {
   const [showAll, setShowAll] = useState(false);
-  const experienceRef = useRef(null); // Reference to experience section
+  const experienceRef = useRef(null);
+  const lastExperienceRef = useRef(null);
 
+  // Toggle showing more/less experiences
   const toggleExperiences = () => {
     setShowAll(!showAll);
-
-    // Wait for UI update, then scroll to experience section
     setTimeout(() => {
-      experienceRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 100); // Small delay ensures the UI updates before scrolling
+      if (!showAll) {
+        lastExperienceRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
+      } else {
+        experienceRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
   };
 
   const visibleExperiences = showAll ? experiences : experiences.slice(0, 3);
@@ -60,10 +67,15 @@ function Experience() {
 
           <div>
             <div className="flex flex-col gap-6">
-              {visibleExperiences.map((experience) => (
+              {visibleExperiences.map((experience, index) => (
                 <GlowCard
                   key={experience.id}
                   identifier={`experience-${experience.id}`}
+                  ref={
+                    index === visibleExperiences.length - 1
+                      ? lastExperienceRef
+                      : null
+                  }
                 >
                   <div className="p-3 relative">
                     <Image
@@ -78,25 +90,30 @@ function Experience() {
                         {experience.duration}
                       </p>
                     </div>
-                    <div className="flex items-center gap-x-8 px-3 py-5">
+                    <div className="flex flex-col items-center text-center px-3 py-5">
                       <div className="text-violet-500 transition-all duration-300 hover:scale-125">
                         <BsPersonWorkspace size={36} />
                       </div>
                       <div>
-                        <p className="text-base sm:text-xl mb-2 font-medium uppercase">
+                        <p className="text-lg sm:text-2xl font-semibold uppercase text-center">
                           {experience.title}
                         </p>
-                        <p className="text-sm sm:text-base">
+                        <p className="text-md sm:text-lg text-gray-400 text-center">
                           {experience.company}
                         </p>
                       </div>
                     </div>
+
+                    {/* Full Summary (No Truncation) */}
+                    <p className="text-sm text-gray-300 mt-2">
+                      {experience.summary}
+                    </p>
                   </div>
                 </GlowCard>
               ))}
             </div>
 
-            {/* Show More / Show Less Button */}
+            {/* Show More / Show Less Button for Experiences */}
             {experiences.length > 3 && (
               <div className="flex justify-center mt-6">
                 <button

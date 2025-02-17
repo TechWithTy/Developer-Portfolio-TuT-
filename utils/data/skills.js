@@ -27,7 +27,6 @@ export const skillsData = [
   "Kubernetes",
   "Jenkins",
   "GitHub Actions",
-
   "Playwright",
   "Cucumber",
   "Gherkin",
