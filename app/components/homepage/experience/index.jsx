@@ -31,7 +31,8 @@ function Experience() {
     }, 100);
   };
 
-  const visibleExperiences = showAll ? experiences : experiences.slice(0, 3);
+  // Show only 2 experiences initially
+  const visibleExperiences = showAll ? experiences : experiences.slice(0, 2);
 
   return (
     <div
@@ -39,14 +40,16 @@ function Experience() {
       id="experience"
       className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
     >
+      {/* Background Image - Centered & Enlarged */}
       <Image
         src="/section.svg"
         alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
+        width={2000}
+        height={1000}
+        className="absolute inset-0 mx-auto my-auto -z-10 w-[90%] max-w-[1800px] h-auto"
       />
 
+      {/* Section Title */}
       <div className="flex justify-center my-5 lg:py-8">
         <div className="flex items-center">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
@@ -59,12 +62,14 @@ function Experience() {
 
       <div className="py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-full h-full">
+          {/* Animated Image */}
+          <div className="flex justify-center items-center">
+            <div className="w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px]">
               <AnimationLottie animationPath={experience} />
             </div>
           </div>
 
+          {/* Experience Cards */}
           <div>
             <div className="flex flex-col gap-6">
               {visibleExperiences.map((experience, index) => (
@@ -78,6 +83,7 @@ function Experience() {
                   }
                 >
                   <div className="p-3 relative">
+                    {/* Background Blur */}
                     <Image
                       src="/blur-23.svg"
                       alt="Hero"
@@ -85,26 +91,30 @@ function Experience() {
                       height={200}
                       className="absolute bottom-0 opacity-80"
                     />
+
+                    {/* Duration */}
                     <div className="flex justify-center">
                       <p className="text-xs sm:text-sm text-[#16f2b3]">
                         {experience.duration}
                       </p>
                     </div>
+
+                    {/* Title & Company - Centered */}
                     <div className="flex flex-col items-center text-center px-3 py-5">
                       <div className="text-violet-500 transition-all duration-300 hover:scale-125">
                         <BsPersonWorkspace size={36} />
                       </div>
                       <div>
-                        <p className="text-lg sm:text-2xl font-semibold uppercase text-center">
+                        <p className="text-lg sm:text-2xl font-semibold uppercase">
                           {experience.title}
                         </p>
-                        <p className="text-md sm:text-lg text-gray-400 text-center">
+                        <p className="text-md sm:text-lg text-gray-400">
                           {experience.company}
                         </p>
                       </div>
                     </div>
 
-                    {/* Full Summary (No Truncation) */}
+                    {/* Full Summary */}
                     <p className="text-sm text-gray-300 mt-2">
                       {experience.summary}
                     </p>
@@ -113,8 +123,8 @@ function Experience() {
               ))}
             </div>
 
-            {/* Show More / Show Less Button for Experiences */}
-            {experiences.length > 3 && (
+            {/* Show More / Show Less Button */}
+            {experiences.length > 2 && (
               <div className="flex justify-center mt-6">
                 <button
                   onClick={toggleExperiences}
