@@ -11,3 +11,4 @@
 11 ✅ -(C) Contributing to Open source (Update skills and icons)
 12 ✅ -(C) Center text for skills that break the line
 13 ✅ -(C) Only Show First 3 Experience (Show More and show less)
+14 ✅ - Save Progress Via Verson Control
