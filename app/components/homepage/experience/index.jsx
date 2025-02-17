@@ -1,6 +1,6 @@
-'use client'
+"use client";
 // @flow strict
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { experiences } from "@/utils/data/experience";
 import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
@@ -10,10 +10,25 @@ import GlowCard from "../../helper/glow-card";
 
 function Experience() {
   const [showAll, setShowAll] = useState(false);
+  const experienceRef = useRef(null); // Reference to experience section
+
+  const toggleExperiences = () => {
+    setShowAll(!showAll);
+
+    // Wait for UI update, then scroll to experience section
+    setTimeout(() => {
+      experienceRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 100); // Small delay ensures the UI updates before scrolling
+  };
+
   const visibleExperiences = showAll ? experiences : experiences.slice(0, 3);
 
   return (
     <div
+      ref={experienceRef}
       id="experience"
       className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
     >
@@ -85,7 +100,7 @@ function Experience() {
             {experiences.length > 3 && (
               <div className="flex justify-center mt-6">
                 <button
-                  onClick={() => setShowAll(!showAll)}
+                  onClick={toggleExperiences}
                   className="px-6 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600 transition-all duration-300"
                 >
                   {showAll ? "Show Less" : "Show More"}
