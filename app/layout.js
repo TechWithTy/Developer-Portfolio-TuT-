@@ -9,7 +9,6 @@ import CalendlyPopup from "./components/helper/calendlyPopup"; // Import Calendl
 import "./css/card.scss";
 import "./css/globals.scss";
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
   title: "Portfolio of Tyrique Daniel - Full Stack Ai Engineer",
   description: `Innovative Senior Full Stack AI Engineer with 8+ years of experience designing and deploying scalable AI applications.

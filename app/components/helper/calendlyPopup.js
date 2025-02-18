@@ -1,4 +1,4 @@
-"use client"; // Ensures this runs only on the client side
+"use client"; // ✅ Ensures this runs only on the client side
 
 import { personalData } from "@/utils/data/personal-data";
 import React, { useEffect, useState } from "react";
@@ -9,13 +9,15 @@ const CalendlyPopup = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setRootElement(document.body);
+    if (typeof window !== "undefined") {
+      setRootElement(document.body);
 
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile(); // Check on mount
-    window.addEventListener("resize", checkMobile);
+      const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+      checkMobile(); // ✅ Check screen size after hydration
+      window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener("resize", checkMobile); // Cleanup
+      return () => window.removeEventListener("resize", checkMobile);
+    }
   }, []);
 
   return (
@@ -24,10 +26,10 @@ const CalendlyPopup = () => {
         <PopupWidget
           url={personalData.calendly}
           rootElement={rootElement}
-          text={isMobile ? "📆 Book Time" : "📆 Schedule Time To Talk"} // Emoji only on mobile
+          text={isMobile ? "📆 Book Time" : "📆 Schedule Time To Talk"} // ✅ Emoji only on mobile
           textColor="#ffffff"
           color="#953ddb"
-          className="calendly-popup" // Add custom class for styling
+          className="calendly-popup" // ✅ Add custom class for styling
         />
       )}
     </>
