@@ -64,7 +64,8 @@ function Experience() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Animated Image */}
           <div className="flex justify-center items-center">
-            <div className="w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px]">
+            <div className="w-[90%] max-w-[400px] lg:h-[90vw] max-h-[400px] sm:max-w-[200px] sm:max-h-[200px] lg:max-w-[600px] lg:max-h-[600px]">
+              {" "}
               <AnimationLottie animationPath={experience} />
             </div>
           </div>
