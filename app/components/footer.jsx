@@ -1,4 +1,5 @@
 // @flow strict
+import { personalData } from "@/utils/data/personal-data";
 import Link from "next/link";
 import { CgGitFork } from "react-icons/cg";
 import { IoStar } from "react-icons/io5";
@@ -15,7 +16,7 @@ function Footer() {
             © Developer Portfolio by{" "}
             <Link
               target="_blank"
-              href="https://www.linkedin.com/in/abu-said-bd/"
+              href={personalData.linkedIn}
               className="text-[#16f2b3]"
             >
               Tyrique Daniel
