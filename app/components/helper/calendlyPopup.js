@@ -24,7 +24,7 @@ const CalendlyPopup = () => {
         <PopupWidget
           url={personalData.calendly}
           rootElement={rootElement}
-          text={isMobile ? "📆 Book time" : "📆 Schedule Time To Talk"} // Emoji only on mobile
+          text={isMobile ? "📆 Book Time" : "📆 Schedule Time To Talk"} // Emoji only on mobile
           textColor="#ffffff"
           color="#953ddb"
           className="calendly-popup" // Add custom class for styling
