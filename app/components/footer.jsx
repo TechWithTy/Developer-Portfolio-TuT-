@@ -21,7 +21,7 @@ function Footer() {
               Tyrique Daniel
             </Link>
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 sm:my-5">
             <Link
               target="_blank"
               href="https://github.com/TechWithTy/Developer-Portfolio-TuT-"
