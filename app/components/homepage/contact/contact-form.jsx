@@ -5,7 +5,8 @@ import axios from "axios";
 import { useState } from "react";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
-
+import { PopupButton } from "react-calendly";
+import { personalData } from "@/utils/data/personal-data";
 function ContactForm() {
   const [error, setError] = useState({ email: false, required: false });
   const [isLoading, setIsLoading] = useState(false);
@@ -139,6 +140,15 @@ function ContactForm() {
                 </span>
               )}
             </button>
+            <PopupButton
+              url={"https://calendly.com/-tyrique/gtknme"}
+              /*
+               * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+               * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+               */
+              rootElement={document.getElementById("root")}
+              text="Click here to schedule!"
+            />
           </div>
         </div>
       </div>

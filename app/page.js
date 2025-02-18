@@ -8,7 +8,6 @@ import Experience from "./components/homepage/experience";
 import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
-
 export default function Home() {
   return (
     <div suppressHydrationWarning>
@@ -20,6 +19,7 @@ export default function Home() {
       <Education />
       <Blog /> {/* ✅ Remove passing blogs as prop */}
       <ContactSection />
+      
     </div>
   );
 }
