@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/helper/scroll-to-top";
 import Navbar from "./components/navbar";
-import CalendlyPopup from "./components/helper/calendlyPopup"; // Import Calendly Widget
+// import CalendlyPopup from "./components/helper/calendlyPopup"; // Import Calendly Widget
 import "./css/card.scss";
 import "./css/globals.scss";
 const inter = Inter({ subsets: ["latin"] });
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
           <ScrollToTop />
         </main>
         <Footer />
-        <CalendlyPopup /> {/* Add Calendly popup here */}
+        {/* <CalendlyPopup /> Add Calendly popup here */}
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
     </html>
