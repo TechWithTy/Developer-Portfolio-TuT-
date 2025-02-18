@@ -11,7 +11,6 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
-
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -108,14 +107,18 @@ function HeroSection() {
               <div className="ml-4 lg:ml-8 mr-2">
                 <span className="text-white">skills:</span>
                 <span className="text-gray-400">{`['`}</span>
-                {skillsData.map((skill, index) => (
+                {skillsData.slice(0, 15).map((skill, index) => (
                   <span key={skill}>
                     <span className="text-amber-300">{skill}</span>
-                    {index !== skillsData.length - 1 && (
+                    {index !== Math.min(skillsData.length, 15) - 1 && (
                       <span className="text-gray-400">{"', '"}</span>
                     )}
                   </span>
                 ))}
+                {skillsData.length > 15 && (
+                  <span className="text-gray-400"> AND MORE</span>
+                )}
+
                 <span className="text-gray-400">{"']"}</span>
               </div>
 
@@ -174,10 +177,10 @@ function HeroSection() {
               </div>
               <div>
                 <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                <span className="mr-2 text-white">hardWorker</span>
+                <span className="mr-2 text-white">seniorDeveloper</span>
                 <span className="text-amber-300">&amp;&amp;</span>
               </div>
-              <div>
+              {/* <div>
                 <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
                 <span className="mr-2 text-white">problemSolver</span>
                 <span className="text-amber-300">&amp;&amp;</span>
@@ -191,7 +194,7 @@ function HeroSection() {
                 <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
                 <span className="mr-2 text-white">greatCommunicator</span>
                 <span className="text-amber-300">&amp;&amp;</span>
-              </div>
+              </div> */}
               <div>
                 <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
                 <span className="mr-2 text-white">skills.length</span>
