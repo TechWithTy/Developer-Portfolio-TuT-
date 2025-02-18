@@ -10,9 +10,11 @@ import "./css/globals.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio of Tyrique Daniel - Software Developer",
-  description:
-    "This is the portfolio of Tyrique Daniel. I am a full stack developer and a self taught developer. I love to learn new things and I am always open to collaborating with others. I am a quick learner and I am always looking for new challenges.",
+  title: "Portfolio of Tyrique Daniel - Full Stack Ai Engineer",
+  description: `Innovative Senior Full Stack AI Engineer with 8+ years of experience designing and deploying scalable AI applications.
+    Expertise in TypeScript, JavaScript, React/Next.js, Python, Golang, and cloud platforms like Google Cloud and AWS. Proven
+    track record in building high-performance web applications, integrating AI models, and establishing robust CI/CD
+    pipelines. Passionate about leveraging cutting-edge technologies to enhance user experience and system efficiency.`,
 };
 
 export default function RootLayout({ children }) {

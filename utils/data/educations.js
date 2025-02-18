@@ -1,20 +1,36 @@
 export const educations = [
   {
     id: 1,
-    title: "Bachelor Degree",
-    duration: "2020 - Present",
-    institution: "National University of Bangladesh",
+    title: "Bachelor's Degree in Software Engineering",
+    duration: "2020 - 2023",
+    institution: "Western Governors University",
   },
   {
     id: 2,
-    title: "Higher Secondary Certificate",
-    duration: "2018 - 2020",
-    institution: "Noakhali Islamia Kamil Madrasah",
+    title: "Meta Front-End Developer Professional Certificate",
+    institution: "Meta",
   },
   {
     id: 3,
-    title: "Secondary School Certificate",
-    duration: "2008 - 2018",
-    institution: "Baitus Saif Islamia Madrasah",
-  }
-]
+    title: "Hugging Face Transformers Certification",
+    institution: "Hugging Face",
+  },
+];
+
+export const certifications = [
+  {
+    id: 1,
+    title: "Meta Front-End Developer Professional Certificate",
+    institution: "Meta",
+  },
+  {
+    id: 2,
+    title: "Hugging Face Transformers Certification",
+    institution: "Hugging Face",
+  },
+  {
+    id: 3,
+    title: "Google Professional Cloud Architect",
+    institution: "Google Cloud",
+  },
+];

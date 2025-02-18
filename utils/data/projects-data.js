@@ -1,52 +1,78 @@
 export const projectsData = [
-    {
-        id: 1,
-        name: 'AI Powered Financial App',
-        description: "Me and my team built an AI-powered financial mobile application. I have developed API using Express, Typescript, OpenAI, AWS, and MongoDB. Used OTP via AWS SES, Google, and Facebook for the authentication system. Built AI assistants using OpenAI's latest model and trained using our dataset. Voice messages are converted to text using AWS Transcribe. The app fetches data from Google Sheets and generates a PDF term sheet, sent via AWS SES.",
-        tools: ['Express', 'MongoDB', 'OpenAI API', 'AWS SES', 'AWS S3', 'Node Mailer', 'Joi', 'Puppeteer', 'EC2', 'PM2', 'Nginx'],
-        role: 'Backend Developer',
-        code: '',
-        demo: '',
-    },
-    {
-        id: 2,
-        name: 'Travel Agency App',
-        description: 'I have designed and developed a full-stack web app for 2Expedition, a travel agency in Armenia. I created the UI using NextJS, Typescript, MUI, TailwindCSS, Google Maps, Sun-Editor, and React Slick. The app supports multiple languages and currencies. I developed the API using NestJS, Typescript, MySQL, TypeORM, AWS, and Nodemailer. I deployed the front-end app to AWS Amplify and the back-end app to AWS EC2.',
-        tools: ['NextJS', 'Tailwind CSS', "Google Maps", "NestJS", "TypeScript", "MySQL", "AWS S3", "Sun-Editor", "Gmail Passkey"],
-        role: 'Full Stack Developer',
-        code: '',
-        demo: '',
-    },
-    {
-        id: 3,
-        name: 'AI Powered Real Estate',
-        description: 'My team built an AI-based real estate app using Replicate API and OpenAI. We used Express, Typescript, OpenAI, Replicate, Stripe, and Mongoose to develop the API. We utilized NextJS, Formik, TailwindCSS, and other npm libraries for the UI. We have trained multiple AI assistants using the latest GPT model and integrated Replicate API for image processing. We added role-based auth, subscription plans, Cron job scheduling, and payment integration with Stripe.',
-        tools: ['React', 'Bootstrap', 'SCSS', 'Stripe', 'Express', 'TypeScript', 'MongoDB', 'Azure Blob', 'OpenAI API', 'Replicate AI', 'Cronjob', 'JWT'],
-        code: '',
-        role: 'Full Stack Developer',
-        demo: '',
-    },
-    {
-        id: 4,
-        name: 'Newsroom Management',
-        description: "My team and I developed a newspaper management dashboard application called Newsroom Management. As a front-end developer, I worked on creating the dashboard using NextJS, Material UI, Redux, Calendar, and other necessary npm libraries. We used React Redux to manage the application's state and React-hook-form and Sun Editor to handle forms.",
-        tools: ['NextJS', 'Material UI', 'Redux', 'Sun Editor', "Calendar"],
-        code: '',
-        demo: '',
-        role: 'Full Stack Developer',
-    }
+  {
+    id: 1,
+    name: "CoVoice",
+    description:
+      "Designed and developed CoVoice’s full-stack architecture using React Native, Python (Django), Java, and Golang. Established scalable API frameworks and optimized database queries, reducing API response times by 50%. Automated CI/CD pipelines with GitHub Actions, Docker, and Kubernetes, streamlining deployment to mobile platforms.",
+    tools: [
+      "React Native",
+      "Django",
+      "Golang",
+      "Java",
+      "Python",
+      "AWS SageMaker",
+      "Kubernetes",
+      "Apache Ray",
+      "Docker",
+      "Terraform",
+    ],
+    role: "Founding Engineer (CTO)",
+    code: "",
+    demo: "https://www.covoice.io/",
+  },
+  {
+    id: 2,
+    name: "LeadIgnite",
+    description:
+      "Developed an AI-driven platform for real estate lead generation and nurturing. Integrated automated outreach via personalized emails, texts, and calls, increasing lead conversion by 30% and closing rates by 4x. Built data pipelines for enhanced lead tracking and AI-based customer interaction automation.",
+    tools: [
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Twilio",
+      "OpenAI",
+      "Google Cloud",
+      "Redis",
+      "Kubernetes",
+    ],
+    role: "Lead Full Stack AI Engineer",
+    code: "",
+    demo: "https://lead-ignite-fork-rho.vercel.app/",
+  },
+  {
+    id: 3,
+    name: "Whisk (Google Labs)",
+    description:
+      "Built an AI-powered image generation tool enabling users to create visuals using image-based prompts. Integrated Gemini and Imagen 3 models for enhanced creative output. Developed robust API endpoints and optimized AI model inference using Google Cloud AI services.",
+    tools: [
+      "Next.js",
+      "TypeScript",
+      "Google Cloud AI",
+      "Gemini AI",
+      "Imagen 3",
+      "TensorFlow",
+      "Kubernetes",
+    ],
+    role: "Lead AI Engineer",
+    code: "",
+    demo: "https://labs.google/fx/es/tools/whisk",
+  },
+  {
+    id: 4,
+    name: "StayBeyondGreen",
+    description:
+      "Developed and optimized responsive web applications for StayBeyondGreen using React.js, Tailwind CSS, and GraphQL. Improved data flow architecture, reducing load times by 30%. Designed scalable back-end services with Node.js and Express, enhancing application performance.",
+    tools: [
+      "React.js",
+      "Tailwind CSS",
+      "GraphQL",
+      "Apollo",
+      "Node.js",
+      "Express.js",
+    ],
+    role: "Lead Full Stack Engineer",
+    code: "",
+    demo: "https://staybeyondgreen.com/",
+  },
 ];
-
-
-// Do not remove any property.
-// Leave it blank instead as shown below
-
-// {
-//     id: 1,
-//     name: '',
-//     description: "",
-//     tools: [],
-//     role: '',
-//     code: '',
-//     demo: '',
-// },
