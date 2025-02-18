@@ -8,7 +8,7 @@ export const personalData = {
   address: "Denver, CO",
   github: "https://github.com/techwithty",
   // facebook: "https://www.facebook.com/", // No Facebook link in resume, kept placeholder
-  linkedIn: "https://www.linkedin.com/in/tyrique-daniel",
+  linkedIn: "https://www.linkedin.com/in/-techwithty/",
   // twitter: "https://twitter.com/", // No Twitter link in resume, kept placeholder
   // stackOverflow: "https://stackoverflow.com/", // No StackOverflow link in resume, kept placeholder
   // leetcode: "https://leetcode.com/", // No Leetcode link in resume, kept placeholder
