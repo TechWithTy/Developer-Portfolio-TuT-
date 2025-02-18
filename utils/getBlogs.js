@@ -1,10 +1,7 @@
 import { personalData } from "./data/personal-data";
 
 export async function getBlogs() {
-  const baseUrl =
-    typeof window === "undefined"
-      ? process.env.NEXT_PUBLIC_SITE_URL // Server-side fetch
-      : ""; // Client-side uses relative path
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   const apiUrl = `${baseUrl}/api/getBlogs`;
   console.log("🔍 Fetching from:", apiUrl);

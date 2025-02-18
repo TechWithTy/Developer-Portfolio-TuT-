@@ -17,8 +17,8 @@ export default function Home() {
       <Skills />
       <Projects />
       <Education />
-      <Blog /> {/* ✅ Remove passing blogs as prop */}
-      <ContactSection />
+      <Blog /> 
+      <ContactSection /> 
       
     </div>
   );

@@ -8,17 +8,17 @@ const CalendlyPopup = () => {
   const [rootElement, setRootElement] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined" && typeof document !== "undefined") {
-  //     setRootElement(document.body);
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof document !== "undefined") {
+      setRootElement(document.body);
 
-  //     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-  //     checkMobile(); // ✅ Only runs after hydration
-  //     window.addEventListener("resize", checkMobile);
+      const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+      checkMobile(); // ✅ Only runs after hydration
+      window.addEventListener("resize", checkMobile);
 
-  //     return () => window.removeEventListener("resize", checkMobile);
-  //   }
-  // }, []);
+      return () => window.removeEventListener("resize", checkMobile);
+    }
+  }, []);
 
   // ✅ Only render the PopupWidget after hydration
   if (!rootElement) return null;
