@@ -14,6 +14,18 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Handle CORS Preflight Requests
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
+}
+
 // Helper function to send a message via Telegram
 async function sendTelegramMessage(token, chat_id, message) {
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -27,7 +39,7 @@ async function sendTelegramMessage(token, chat_id, message) {
     console.error('Error sending Telegram message:', error.response?.data || error.message);
     return false;
   }
-};
+}
 
 // HTML email template
 const generateEmailTemplate = (name, email, userMessage) => `
@@ -65,8 +77,9 @@ async function sendEmail(payload, message) {
     console.error('Error while sending email:', error.message);
     return false;
   }
-};
+}
 
+// Handle POST Request (Main API Logic)
 export async function POST(request) {
   try {
     const payload = await request.json();
@@ -76,13 +89,15 @@ export async function POST(request) {
 
     // Validate environment variables
     if (!token || !chat_id) {
-      return NextResponse.json({
-        success: false,
-        message: 'Telegram token or chat ID is missing.',
-      }, { status: 400 });
+      return new Response(JSON.stringify({ success: false, message: "Telegram token or chat ID is missing." }), {
+        status: 400,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
     }
 
-    const message = `New message from ${name}\n\nEmail: ${email}\n\nMessage:\n\n${userMessage}\n\n`;
+    const message = `New message from ${name}\n\nEmail: ${email}\n\nMessage:\n\n${userMessage}`;
 
     // Send Telegram message
     const telegramSuccess = await sendTelegramMessage(token, chat_id, message);
@@ -91,21 +106,28 @@ export async function POST(request) {
     const emailSuccess = await sendEmail(payload, message);
 
     if (telegramSuccess && emailSuccess) {
-      return NextResponse.json({
-        success: true,
-        message: 'Message and email sent successfully!',
-      }, { status: 200 });
+      return new Response(JSON.stringify({ success: true, message: "Message and email sent successfully!" }), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
     }
 
-    return NextResponse.json({
-      success: false,
-      message: 'Failed to send message or email.',
-    }, { status: 500 });
+    return new Response(JSON.stringify({ success: false, message: "Failed to send message or email." }), {
+      status: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   } catch (error) {
     console.error('API Error:', error.message);
-    return NextResponse.json({
-      success: false,
-      message: 'Server error occurred.',
-    }, { status: 500 });
+    return new Response(JSON.stringify({ success: false, message: "Server error occurred." }), {
+      status: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   }
-};
+}
