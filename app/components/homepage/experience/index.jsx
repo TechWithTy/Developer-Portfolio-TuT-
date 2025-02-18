@@ -7,7 +7,7 @@ import { BsPersonWorkspace } from "react-icons/bs";
 import experience from "../../../assets/lottie/code.json";
 import AnimationLottie from "../../helper/animation-lottie";
 import GlowCard from "../../helper/glow-card";
-
+import { personalData } from "@/utils/data/personal-data";
 function Experience() {
   const [showAll, setShowAll] = useState(false);
   const experienceRef = useRef(null);
@@ -50,7 +50,7 @@ function Experience() {
       />
 
       {/* Section Title */}
-      <div className="flex justify-center my-5 lg:py-8">
+      <div className="flex justify-center my-1 lg:py-4">
         <div className="flex items-center">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
@@ -58,6 +58,18 @@ function Experience() {
           </span>
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
+      </div>
+
+      {/* Resume Link */}
+      <div className="flex justify-center">
+        <a
+          href={personalData.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white font-itcalic underline hover:text-[#c769a8] font-medium"
+        >
+          Get My Resume
+        </a>
       </div>
 
       <div className="py-8">
