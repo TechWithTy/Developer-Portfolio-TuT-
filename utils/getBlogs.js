@@ -37,7 +37,7 @@ export async function getBlogs() {
     console.error(
       "❌ Error fetching blogs:",
       `${baseUrl}/api/getBlogs`,
-      `https://dev.to/api/articles?username=${personalData.devUsername}`,
+
       error
     );
 

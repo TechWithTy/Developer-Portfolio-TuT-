@@ -1,9 +1,19 @@
-// @flow strict
+"use client"; // ✅ Marks this as a Client Component
+
+import { useState, useEffect } from "react";
 import { getBlogs } from "@/utils/getBlogs";
 import BlogCard from "@/app/components/homepage/blog/blog-card";
 
-export default async function Page() {
-  const blogs = await getBlogs(); // ✅ Fetch on server
+export default function Page() {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    async function fetchBlogs() {
+      const data = await getBlogs();
+      setBlogs(data);
+    }
+    fetchBlogs();
+  }, []);
 
   return (
     <div className="py-8">
