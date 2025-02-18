@@ -9,30 +9,29 @@ const CalendlyPopup = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && typeof document !== "undefined") {
       setRootElement(document.body);
 
       const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-      checkMobile(); // ✅ Check screen size after hydration
+      checkMobile(); // ✅ Only runs after hydration
       window.addEventListener("resize", checkMobile);
 
       return () => window.removeEventListener("resize", checkMobile);
     }
   }, []);
 
+  // ✅ Only render the PopupWidget after hydration
+  if (!rootElement) return null;
+
   return (
-    <>
-      {rootElement && (
-        <PopupWidget
-          url={personalData.calendly}
-          rootElement={rootElement}
-          text={isMobile ? "📆 Book Time" : "📆 Schedule Time To Talk"} // ✅ Emoji only on mobile
-          textColor="#ffffff"
-          color="#953ddb"
-          className="calendly-popup" // ✅ Add custom class for styling
-        />
-      )}
-    </>
+    <PopupWidget
+      url={personalData.calendly}
+      rootElement={rootElement}
+      text={isMobile ? "📆 Book Time" : "📆 Schedule Time To Talk"} // ✅ Emoji only on mobile
+      textColor="#ffffff"
+      color="#953ddb"
+      className="calendly-popup" // ✅ Add custom class for styling
+    />
   );
 };
 
