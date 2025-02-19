@@ -149,7 +149,7 @@ export const personalData = {
   name: "Tyrique Daniel",
   profile: "/profile.png",
   designation: "Full-Stack Software Developer",
-  description: "My name isJacob Robinson....",
+  description: "My name isTyrique Daniel....",
   email: "abusaid7388@gmail.com",
   phone: "+8801608797655",
   address: "Dhaka, Bangladesh",
