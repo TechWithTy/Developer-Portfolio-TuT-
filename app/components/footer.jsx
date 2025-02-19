@@ -19,7 +19,7 @@ function Footer() {
               href={personalData.linkedIn}
               className="text-[#16f2b3]"
             >
-              Tyrique Daniel
+              Jacob Robinson
             </Link>
           </p>
           <div className="flex items-center gap-5 sm:my-5">

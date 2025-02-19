@@ -1,8 +1,5 @@
-
 ---
-
 # [Built Portfolio With GitHub ](https://github.com/said7388/github-portfolio)
-
 ---
 
 # Developer Portfolio
@@ -152,7 +149,7 @@ export const personalData = {
   name: "Tyrique Daniel",
   profile: "/profile.png",
   designation: "Full-Stack Software Developer",
-  description: "My name is Tyrique Daniel....",
+  description: "My name isJacob Robinson....",
   email: "abusaid7388@gmail.com",
   phone: "+8801608797655",
   address: "Dhaka, Bangladesh",
