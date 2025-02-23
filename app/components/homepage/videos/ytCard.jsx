@@ -10,13 +10,13 @@ function YouTubeCard({ video }) {
     <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group mx-auto w-full max-w-[450px]">
       {/* Clickable Thumbnail */}
       <Link href={video.url} target="_blank">
-        <div className="h-44 lg:h-52 w-auto cursor-pointer overflow-hidden rounded-t-lg relative">
+        <div className="h-44 lg:h-52 w-full cursor-pointer overflow-hidden rounded-t-lg relative">
           <Image
             src={bestThumbnail}
-            height={188} // Adjust to match your UI
-            width={336} // Adjust to match your UI
+            layout="fill" // ✅ Ensures full width and height
+            objectFit="cover" // ✅ Prevents stretching, maintains aspect ratio
             alt={video.title}
-            className="h-full w-full group-hover:scale-110 transition-all duration-300"
+            className="group-hover:scale-110 transition-all duration-300"
             unoptimized // ⚡ Ensures images load correctly from YouTube
           />
           {/* Play Icon Overlay */}
