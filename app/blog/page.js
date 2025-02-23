@@ -1,7 +1,7 @@
 "use client"; // ✅ Marks this as a Client Component
 
 import { useState, useEffect } from "react";
-import { getBlogs } from "@/utils/getBlogs";
+import { fetchBlogs } from "@/utils/getBlogs";
 import BlogCard from "@/app/components/homepage/blog/blog-card";
 
 export default function Page() {
@@ -9,11 +9,11 @@ export default function Page() {
   const [searchQuery, setSearchQuery] = useState(""); // ✅ Search state
 
   useEffect(() => {
-    async function fetchBlogs() {
-      const data = await getBlogs();
+    async function fetchBlogsScoped() {
+      const data = await fetchBlogs();
       setBlogs(data);
     }
-    fetchBlogs();
+    fetchBlogsScoped();
   }, []);
 
   // ✅ Filtered blogs based on title or tags

@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import BlogCard from "./blog-card";
-import { getBlogs } from "@/utils/getBlogs"; // ✅ Import utility function
+import { fetchBlogs } from "@/utils/getBlogs"; // ✅ Import utility function
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    async function fetchBlogs() {
-      const data = await getBlogs();
+    async function fetchBlogsScoped() {
+      const data = await fetchBlogs();
       setBlogs(data);
     }
-    fetchBlogs();
+    fetchBlogsScoped();
   }, []);
 
   return (

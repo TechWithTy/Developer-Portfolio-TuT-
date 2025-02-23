@@ -1,6 +1,6 @@
 import { personalData } from "./data/personal-data";
 
-export async function getBlogs() {
+export async function fetchBlogs() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   const apiUrl = `${baseUrl}/api/getBlogs`;
