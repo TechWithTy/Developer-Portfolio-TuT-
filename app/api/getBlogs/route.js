@@ -11,7 +11,6 @@ export async function GET() {
         "User-Agent": "curl/7.64.1",
         Connection: "close",
       },
-      cache: "no-store", // 🚀 Disable fetch caching
     });
 
     if (!response.ok) {
