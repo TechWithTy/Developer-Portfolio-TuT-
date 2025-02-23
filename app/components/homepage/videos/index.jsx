@@ -8,13 +8,13 @@ import YouTubeCard from "./ytCard";
 function Videos() {
   const [videos, setVideos] = useState([]);
 
-//   useEffect(() => {
-//     async function fetchVideosScoped() {
-//       const data = await fetchYoutubeVideos();
-//       setVideos(data);
-//     }
-//     fetchVideosScoped();
-//   }, []);
+  useEffect(() => {
+    async function fetchVideosScoped() {
+      const data = await fetchYoutubeVideos();
+      setVideos(data);
+    }
+    fetchVideosScoped();
+  }, []);
 
   return (
     <div id="videos" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
