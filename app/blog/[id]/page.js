@@ -1,8 +1,7 @@
 // ✅ This is now a SERVER COMPONENT (no "use client")
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Markdown from "react-markdown";
-
+import MarkdownRenderer from "@/app/components/helper/markdownRenderer";
 // Fetch blog data from API (Server-Side)
 async function getBlogPost(id) {
   const res = await fetch(
@@ -88,9 +87,7 @@ export default async function BlogPost({ params }) {
       )}
 
       {/* Blog Content (Markdown) */}
-      <div className="prose lg:prose-xl mt-6 text-gray-200">
-        <Markdown breaks={true}>{blog.body_markdown}</Markdown>
-      </div>
+      <MarkdownRenderer content={blog.body_markdown} />
     </div>
   );
 }
