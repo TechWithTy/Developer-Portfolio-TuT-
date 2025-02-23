@@ -1,7 +1,9 @@
 // ✅ This is now a SERVER COMPONENT (no "use client")
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import MarkdownRenderer from "@/app/components/helper/markdownRenderer";
+
 // Fetch blog data from API (Server-Side)
 async function getBlogPost(id) {
   const res = await fetch(
@@ -32,9 +34,6 @@ export default async function BlogPost({ params }) {
   if (!blog) {
     notFound(); // Automatically show 404 page if blog is missing
   }
-  console.log("📌 Full Blog Data:", blog);
-  console.log("📌 Tag List Type:", typeof blog.tag_list);
-  console.log("📌 Tag List Value:", blog.tag_list);
 
   return (
     <div className="max-w-3xl mx-auto py-8 px-4 text-white">
@@ -54,6 +53,7 @@ export default async function BlogPost({ params }) {
       <h1 className="text-3xl md:text-4xl font-bold mt-6 text-center">
         {blog.title}
       </h1>
+      
       <div className="mt-4 text-center">
         <a
           href={blog.url} // ✅ Dev.to link
@@ -64,6 +64,7 @@ export default async function BlogPost({ params }) {
           View Blog on Dev.to
         </a>
       </div>
+
       {/* Metadata */}
       <p className="text-gray-400 text-sm mt-2 text-center">
         Published on {new Date(blog.published_at).toLocaleDateString()} by{" "}
@@ -88,6 +89,15 @@ export default async function BlogPost({ params }) {
 
       {/* Blog Content (Markdown) */}
       <MarkdownRenderer content={blog.body_markdown} />
+
+      {/* ✅ Back to Blogs Button */}
+      <div className="mt-8 text-center">
+        <Link href="/blog">
+          <button className="bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-md transition">
+            ← Back to Blogs
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
