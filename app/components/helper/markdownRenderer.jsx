@@ -52,29 +52,46 @@ export default function MarkdownRenderer({ content }) {
   };
 
   return (
-    <div className="prose lg:prose-xl mt-6 text-gray-200">
+    <div className="prose prose-invert lg:prose-xl mt-6 text-gray-200">
       <Markdown
-        remarkPlugins={[remarkGfm, remarkBreaks]}
-        rehypePlugins={[rehypeRaw]}
+        remarkPlugins={[remarkGfm, remarkBreaks]} // Enables GitHub Flavored Markdown (GFM)
+        rehypePlugins={[rehypeRaw]} // Allows raw HTML inside Markdown
         components={{
           p: ({ node, children }) => <p className="mb-4">{children}</p>,
           br: () => <br />,
-          code: ({ children }) => {
+
+          // ✅ Unordered List (Bulleted Lists)
+          ul: ({ node, children }) => (
+            <ul className="list-disc list-inside space-y-2 pl-4">{children}</ul>
+          ),
+
+          // ✅ Ordered List (Numbered Lists)
+          ol: ({ node, children }) => (
+            <ol className="list-decimal list-inside space-y-2 pl-4">
+              {children}
+            </ol>
+          ),
+
+          // ✅ List Items (Ensures proper spacing)
+          li: ({ node, children }) => <li className="ml-4">{children}</li>,
+
+          // ✅ Code Blocks (for aliases & bash scripts)
+          code: ({ children, inline }) => {
             const text = String(children).trim();
 
-            // ✅ Handle `{% embed URL %}`
-            if (text.startsWith("<iframe src=")) {
-              const embedUrl = text.match(/<iframe src="(.*?)" \/>/)?.[1];
-              return embedUrl ? <IframeEmbed src={embedUrl} /> : null;
+            if (inline) {
+              return (
+                <code className="px-1 py-0.5 bg-gray-800 text-green-400 rounded">
+                  {text}
+                </code>
+              );
             }
 
-            // ✅ Handle `{% gist URL %}`
-            if (text.startsWith("<gist data-url=")) {
-              const gistUrl = text.match(/<gist data-url="(.*?)" \/>/)?.[1];
-              return gistUrl ? <GistEmbed gistUrl={gistUrl} /> : null;
-            }
-
-            return <code>{text}</code>;
+            return (
+              <pre className="p-4 bg-gray-900 rounded-lg overflow-x-auto">
+                <code className="text-green-400">{text}</code>
+              </pre>
+            );
           },
         }}
       >
