@@ -8,7 +8,7 @@ function BlogCard({ blog }) {
   return (
     <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group mx-auto w-full max-w-[450px]">
       {/* Clickable Image */}
-      <Link href={blog.url} target="_blank">
+      <Link href={`/blog/${blog.id}`} passHref>
         <div className="h-44 lg:h-52 w-auto cursor-pointer overflow-hidden rounded-t-lg">
           <Image
             src={blog?.cover_image}
@@ -38,12 +38,14 @@ function BlogCard({ blog }) {
         </div>
 
         {/* Clickable Title */}
-        <Link target="_blank" href={blog.url}>
+        <Link href={`/blog/${blog.id}`} passHref>
           <p className="my-2 lg:my-3 cursor-pointer text-lg text-white sm:text-xl font-medium hover:text-violet-500 text-center">
             {blog.title}
           </p>
         </Link>
-        {blog.tag_list.length > 0 && (
+
+        {/* Tag List */}
+        {blog.tag_list?.length > 0 && (
           <div className="flex flex-wrap justify-center gap-2 my-2">
             {blog.tag_list.map((tag, index) => (
               <span
@@ -55,6 +57,7 @@ function BlogCard({ blog }) {
             ))}
           </div>
         )}
+
         <p className="mb-2 text-sm text-[#16f2b3] text-center">
           {`${blog.reading_time_minutes} Min Read`}
         </p>
@@ -62,8 +65,6 @@ function BlogCard({ blog }) {
         <p className="text-sm lg:text-base text-[#d3d8e8] pb-3 lg:pb-6 line-clamp-3 text-center">
           {blog.description}
         </p>
-
-        {/* Tag List Section */}
       </div>
     </div>
   );
