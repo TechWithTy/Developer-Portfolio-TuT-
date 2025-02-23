@@ -1,14 +1,13 @@
 import axios from "axios";
 
 const DEFAULT_PLAYLIST_ID = process.env.youtubePlaylistID || "PLjcNzWp8XCA8g6K6QzRMxi0gyVeke-cBf"; // Default Playlist
-const MAX_RESULTS = 10;
 
-export async function fetchYoutubeVideos(playlistId = DEFAULT_PLAYLIST_ID, limit = MAX_RESULTS) {
+export async function fetchYoutubeVideos(playlistId = DEFAULT_PLAYLIST_ID, limit = null) {
   try {
     const response = await axios.get(`/api/youtube`, {
       params: {
         playlistId,
-        limit,
+        ...(limit && { limit }), // ✅ Only add limit if it's provided
       },
     });
 
