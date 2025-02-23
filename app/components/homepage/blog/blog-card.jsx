@@ -43,7 +43,18 @@ function BlogCard({ blog }) {
             {blog.title}
           </p>
         </Link>
-
+        {blog.tag_list.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-2 my-2">
+            {blog.tag_list.map((tag, index) => (
+              <span
+                key={index}
+                className="bg-[#16f2b3] text-[#1b203e] px-3 py-1 rounded-full text-xs font-semibold"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
         <p className="mb-2 text-sm text-[#16f2b3] text-center">
           {`${blog.reading_time_minutes} Min Read`}
         </p>
@@ -51,6 +62,8 @@ function BlogCard({ blog }) {
         <p className="text-sm lg:text-base text-[#d3d8e8] pb-3 lg:pb-6 line-clamp-3 text-center">
           {blog.description}
         </p>
+
+        {/* Tag List Section */}
       </div>
     </div>
   );
