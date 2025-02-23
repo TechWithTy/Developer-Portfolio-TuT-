@@ -3,17 +3,21 @@ import Link from "next/link";
 import { FaPlayCircle } from "react-icons/fa";
 
 function YouTubeCard({ video }) {
+  // ✅ Select the highest resolution thumbnail available
+  const bestThumbnail = video.thumbnail?.thumbnails?.slice(-1)[0]?.url || "/placeholder-image.jpg";
+
   return (
     <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group mx-auto w-full max-w-[450px]">
       {/* Clickable Thumbnail */}
       <Link href={video.url} target="_blank">
         <div className="h-44 lg:h-52 w-auto cursor-pointer overflow-hidden rounded-t-lg relative">
           <Image
-            src={video.thumbnail}
-            height={1080}
-            width={1920}
+            src={bestThumbnail}
+            height={188} // Adjust to match your UI
+            width={336} // Adjust to match your UI
             alt={video.title}
             className="h-full w-full group-hover:scale-110 transition-all duration-300"
+            unoptimized // ⚡ Ensures images load correctly from YouTube
           />
           {/* Play Icon Overlay */}
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

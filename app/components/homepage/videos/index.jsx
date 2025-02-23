@@ -1,45 +1,66 @@
-import Image from "next/image";
+"use client"; // ✅ Run fetch in the browser
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaPlayCircle } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
+import { fetchYoutubeVideos } from "@/utils/fetchYoutubeVideos"; // ✅ Import utility function
+import YouTubeCard from "./ytCard";
+function Videos() {
+  const [videos, setVideos] = useState([]);
 
-function YouTubeCard({ video }) {
+//   useEffect(() => {
+//     async function fetchVideosScoped() {
+//       const data = await fetchYoutubeVideos();
+//       setVideos(data);
+//     }
+//     fetchVideosScoped();
+//   }, []);
+
   return (
-    <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group mx-auto w-full max-w-[450px]">
-      {/* Clickable Thumbnail */}
-      <Link href={video.url} target="_blank">
-        <div className="h-44 lg:h-52 w-auto cursor-pointer overflow-hidden rounded-t-lg relative">
-          <Image
-            src={video.thumbnail}
-            height={1080}
-            width={1920}
-            alt={video.title}
-            className="h-full w-full group-hover:scale-110 transition-all duration-300"
-          />
-          {/* Play Icon Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <FaPlayCircle className="text-white text-5xl" />
-          </div>
-        </div>
-      </Link>
+    <div id="videos" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+      {/* Blurred Background Effect */}
+      <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl opacity-20"></div>
 
-      <div className="p-2 sm:p-3 flex flex-col">
-        {/* Channel & Duration */}
-        <div className="flex justify-between items-center text-[#16f2b3] text-sm">
-          <p>{video.channel}</p>
-          <span className="bg-[#16f2b3] text-[#1b203e] px-2 py-1 rounded-full text-xs font-semibold">
-            {video.duration}
+      {/* Top Line Decoration */}
+      <div className="flex justify-center -translate-y-[1px]">
+        <div className="w-3/4">
+          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent w-full" />
+        </div>
+      </div>
+
+      {/* Section Title */}
+      <div className="flex justify-center my-5 lg:py-8">
+        <div className="flex items-center">
+          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
+            Videos
           </span>
+          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
+      </div>
 
-        {/* Clickable Title */}
-        <Link target="_blank" href={video.url}>
-          <p className="my-2 lg:my-3 cursor-pointer text-lg text-white sm:text-xl font-medium hover:text-violet-500 text-center">
-            {video.title}
-          </p>
+      {/* ✅ Display YouTube Videos */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
+        {videos.length > 0 ? (
+          videos.slice(0, 6).map((video, i) => <YouTubeCard video={video} key={i} />)
+        ) : (
+          <p className="text-center text-white">No videos available.</p>
+        )}
+      </div>
+
+      {/* View More Button */}
+      <div className="flex justify-center mt-5 lg:mt-12">
+        <Link
+          className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
+          role="button"
+          href="/videos"
+        >
+          <span>View More</span>
+          <FaArrowRight size={16} />
         </Link>
       </div>
     </div>
   );
 }
 
-export default YouTubeCard;
+export default Videos;

@@ -6,7 +6,7 @@ export async function GET(req) {
     // Extract query parameters from the request URL
     const { searchParams } = new URL(req.url);
     const playlistId = searchParams.get("playlistId");
-    const limit = parseInt(searchParams.get("limit") || "10", 10); // Default limit: 10 videos
+    const limit = parseInt(searchParams.get("limit") || "10", 10);
 
     // Validate required parameter
     if (!playlistId) {
@@ -19,18 +19,18 @@ export async function GET(req) {
     // Fetch videos from the playlist
     const videos = await youtubesearchapi.GetPlaylistData(playlistId, limit);
 
-    // ✅ Add full video URLs to each item
+    // ✅ Add full video URLs & extract channel name
     const formattedVideos = videos.items.map((video) => ({
       id: video.id,
       title: video.title,
-      thumbnail: video.thumbnail, // Keep thumbnail data
-      url: `https://www.youtube.com/watch?v=${video.id}`, // Generate video URL
-      duration: video.length?.simpleText || "N/A", // Duration if available
-      channel: video.channelTitle || "Unknown", // Channel name
+      thumbnail: video.thumbnail,
+      url: `https://www.youtube.com/watch?v=${video.id}`,
+      duration: video.length?.simpleText || "N/A",
+      channel: video.shortBylineText?.runs?.[0]?.text || "Unknown", // ✅ Fixed channel name extraction
     }));
 
     return NextResponse.json(
-      { success: true, data: formattedVideos },
+      { success: true, data: formattedVideos, originalResponse: videos }, // ✅ Include raw API response
       { status: 200 }
     );
   } catch (error) {
