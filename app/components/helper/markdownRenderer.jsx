@@ -45,10 +45,11 @@ const GistEmbed = ({ gistUrl }) => {
 
 export default function MarkdownRenderer({ content }) {
   // ✅ Preprocess markdown to replace `{% embed %}` and `{% gist %}`
+
   const preprocessContent = (text) => {
     return text
-      .replace(/{% embed (.*?) %}/g, (_, url) => `<iframe src="${url}" />`) // Replace embeds
-      .replace(/{% gist (.*?) %}/g, (_, url) => `<gist data-url="${url}" />`); // Replace Gists
+      .replace(/{% embed (.*?) %}/g, (_, url) => `<iframe src="${url}" />`) // ✅ Handle iframes
+      .replace(/{% gist (.*?) %}/g, (_, url) => `{%GIST:${url}%}`); // ✅ Placeholder for GistEmbed
   };
 
   return (
@@ -74,8 +75,20 @@ export default function MarkdownRenderer({ content }) {
 
           // ✅ List Items (Ensures proper spacing)
           li: ({ node, children }) => <li className="ml-4">{children}</li>,
-
+          a: ({ node, href, children }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:underline"
+            >
+              {children}
+            </a>
+          ),
           // ✅ Code Blocks (for aliases & bash scripts)
+          gist: ({ node, "data-url": gistUrl }) => (
+            <GistEmbed gistUrl={gistUrl} />
+          ),
           code: ({ children, inline }) => {
             const text = String(children).trim();
 
