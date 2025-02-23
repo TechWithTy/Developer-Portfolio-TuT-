@@ -1,4 +1,3 @@
-
 export async function GET() {
   try {
     const DEVTO_API_URL = "https://dev.to/api/articles/me";
@@ -8,10 +7,11 @@ export async function GET() {
     const response = await fetch(DEVTO_API_URL, {
       headers: {
         Accept: "application/vnd.forem.api-v1+json",
-        "api-key": process.env.DEVTO_API_KEY, // 🔥 Ensure this is defined in `.env.local`
-        "User-Agent": "curl/7.64.1", // 🚀 Mimic cURL's user agent
-        Connection: "close", // 🔥 Prevents keep-alive issues
+        "api-key": process.env.DEVTO_API_KEY, // Ensure this is in `.env.local`
+        "User-Agent": "curl/7.64.1",
+        Connection: "close",
       },
+      cache: "no-store", // 🚀 Disable fetch caching
     });
 
     if (!response.ok) {
@@ -26,7 +26,13 @@ export async function GET() {
 
     return new Response(JSON.stringify(data), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control":
+          "no-store, no-cache, must-revalidate, proxy-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
     });
   } catch (error) {
     console.error("❌ API Route Error:", error);
