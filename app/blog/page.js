@@ -50,7 +50,7 @@ export default function Page() {
       </div>
 
       {/* ✅ Grid of Blogs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10 auto-rows-fr">
         {filteredBlogs.length > 0 ? (
           filteredBlogs.map((blog, i) => <BlogCard blog={blog} key={i} />)
         ) : (

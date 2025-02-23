@@ -40,12 +40,10 @@ function Blog() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
-        {blogs.length > 0 ? (
-          blogs.slice(0, 6).map((blog, i) => <BlogCard blog={blog} key={i} />)
-        ) : (
-          <p className="text-center text-white">No blogs available.</p>
-        )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto">
+        {blogs.map((blog) => (
+          <BlogCard key={blog.id} blog={blog} />
+        ))}
       </div>
 
       <div className="flex justify-center mt-5 lg:mt-12">
