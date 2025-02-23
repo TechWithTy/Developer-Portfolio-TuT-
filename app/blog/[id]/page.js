@@ -13,7 +13,17 @@ async function getBlogPost(id) {
     return null; // Handle errors properly
   }
 
-  return res.json();
+  const data = await res.json();
+
+  // ✅ Ensure tag_list is always an array
+  return {
+    ...data,
+    tag_list: Array.isArray(data.tag_list)
+      ? data.tag_list
+      : typeof data.tag_list === "string"
+      ? data.tag_list.split(",").map((tag) => tag.trim())
+      : [],
+  };
 }
 
 // ✅ Blog Page Component
@@ -23,6 +33,9 @@ export default async function BlogPost({ params }) {
   if (!blog) {
     notFound(); // Automatically show 404 page if blog is missing
   }
+  console.log("📌 Full Blog Data:", blog);
+  console.log("📌 Tag List Type:", typeof blog.tag_list);
+  console.log("📌 Tag List Value:", blog.tag_list);
 
   return (
     <div className="max-w-3xl mx-auto py-8 px-4 text-white">
