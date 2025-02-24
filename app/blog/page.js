@@ -54,7 +54,7 @@ export default function Page() {
         {filteredBlogs.length > 0 ? (
           filteredBlogs.map((blog, i) => <BlogCard blog={blog} key={i} />)
         ) : (
-          <LoadingScreen title={"Loading Blogs..."} /> 
+          {/* <LoadingScreen title={"Loading Blogs..."} />  */}
         )}
       </div>
     </div>
