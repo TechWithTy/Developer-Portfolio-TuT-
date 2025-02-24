@@ -8,7 +8,7 @@ const AnimationLottie = ({ animationPath, width }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      import(animationPath).then((data) =>
+      import("../../assets/lottie/space-loading.json").then((data) =>
         setAnimationData(data.default)
       );
     }
@@ -17,11 +17,11 @@ const AnimationLottie = ({ animationPath, width }) => {
   if (!animationData) return null; // Prevent rendering before data loads
 
   return (
-    <Lottie 
-      animationData={animationData} 
-      loop 
-      autoplay 
-      style={{ width: width || "95%" }} 
+    <Lottie
+      animationData={animationData}
+      loop
+      autoplay
+      style={{ width: width || "95%" }}
     />
   );
 };
