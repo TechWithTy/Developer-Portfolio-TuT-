@@ -21,7 +21,7 @@ const CarouselHelper = ({ children }) => {
       {/* Chevron Left Button */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-80 transition z-10"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 p-2 bg-violet-500 rounded-md hover:bg-violet-600 transition-all duration-300"
       >
         <FaChevronLeft size={24} />
       </button>
@@ -32,7 +32,7 @@ const CarouselHelper = ({ children }) => {
       {/* Chevron Right Button */}
       <button
         onClick={nextSlide}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-80 transition z-10"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2  bg-violet-500 rounded-md hover:bg-violet-600 transition-all duration-300"
       >
         <FaChevronRight size={24} />
       </button>
