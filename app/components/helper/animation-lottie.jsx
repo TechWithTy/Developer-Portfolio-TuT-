@@ -1,29 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 
 const AnimationLottie = ({ animationPath, width }) => {
-  const [animationData, setAnimationData] = useState(null);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationPath,
+    style: {
+      width: width ? width : "95%",
+    },
+  };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      import("../../assets/lottie/space-loading.json").then((data) =>
-        setAnimationData(data.default)
-      );
-    }
-  }, []);
-
-  if (!animationData) return null; // Prevent rendering before data loads
-
-  return (
-    <Lottie
-      animationData={animationData}
-      loop
-      autoplay
-      style={{ width: width || "95%" }}
-    />
-  );
+  return <Lottie {...defaultOptions} />;
 };
 
 export default AnimationLottie;
