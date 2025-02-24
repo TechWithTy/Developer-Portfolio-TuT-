@@ -5,15 +5,16 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/helper/scroll-to-top";
 import Navbar from "./components/navbar";
-import CalendlyPopup from "./components/helper/calendlyPopup"; // Import Calendly Widget
+import CalendlyPopup from "./components/helper/calendlyPopup";
 import ClientOnly from "./components/helper/clientwrapper";
+import LoadingScreen from "./components/helper/loading"; // Import LoadingScreen
 import "./css/card.scss";
 import "./css/globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio ofTyrique Daniel - Full Stack AI Engineer",
+  title: "Portfolio of Tyrique Daniel - Full Stack AI Engineer",
   description: `Innovative Senior Full Stack AI Engineer with 8+ years of experience designing and deploying scalable AI applications.
     Expertise in TypeScript, JavaScript, React/Next.js, Python, Golang, and cloud platforms like Google Cloud and AWS. Proven
     track record in building high-performance web applications, integrating AI models, and establishing robust CI/CD
@@ -21,17 +22,18 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // Track whether window is available
-
   return (
     <html lang="en" id="root">
-    
       <body className={inter.className}>
+        {/* Show Loading Animation */}
+        <LoadingScreen />
+
+        {/* Main Page Content */}
         <ToastContainer />
         <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
           <Navbar />
-          <ClientOnly>{children}</ClientOnly>{" "}
-          {/* Wrap children in client component */} <ScrollToTop />
+          <ClientOnly>{children}</ClientOnly>
+          <ScrollToTop />
         </main>
         <Footer />
         <CalendlyPopup />
