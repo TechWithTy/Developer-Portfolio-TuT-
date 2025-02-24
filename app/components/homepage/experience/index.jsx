@@ -54,21 +54,18 @@ function Experience() {
         <div className="flex items-center">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Experiences
+            Experience
           </span>
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
       </div>
 
       {/* Resume Link */}
-      <div className="flex justify-center">
-        <a
-          href={personalData.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white font-itcalic underline hover:text-[#c769a8] font-medium"
-        >
-          Get My Resume
+      <div className="flex justify-center mt-4">
+        <a href={personalData.resume} target="_blank" rel="noopener noreferrer">
+          <button className="px-6 py-2 text-white font-medium bg-[#c769a8] rounded-lg hover:bg-[#b05794] transition-all duration-300">
+            Get My Resume
+          </button>
         </a>
       </div>
 
