@@ -2,7 +2,7 @@
 
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
-import Carousel from "../../helper/carouselHelper";
+import AboutCarousel from "./carousel";
 function AboutSection() {
   return (
     <div id="about" className="my-3 lg:my-16 relative">
@@ -13,8 +13,6 @@ function AboutSection() {
         <span className="h-36 w-[2px] bg-[#1a1443]"></span>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-        <Carousel />
-
         <div className="flex justify-center order-1 lg:order-2">
           <Image
             src={personalData.profile}
@@ -24,6 +22,9 @@ function AboutSection() {
             className="rounded-lg transition-all duration-1000 hover:scale-110 cursor-pointer"
           />
         </div>
+      </div>
+      <div className="my-5">
+        <AboutCarousel />
       </div>
     </div>
   );

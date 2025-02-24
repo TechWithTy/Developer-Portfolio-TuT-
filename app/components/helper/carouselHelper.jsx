@@ -1,9 +1,9 @@
 "use client";
-import { useState, Children, ReactNode } from "react";
+import { useState, Children } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const CarouselHelper = ({ children }) => {
-  const slides = Children.toArray(children); // Ensure children is an array
+  const slides = Children.toArray(children); // Ensure children are treated as an array
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
@@ -14,25 +14,25 @@ const CarouselHelper = ({ children }) => {
     setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
-  if (slides.length === 0) return null; // Handle edge case where no slides exist
+  if (slides.length === 0) return null; // Handle empty state gracefully
 
   return (
     <div className="relative w-full max-w-2xl mx-auto text-center sm:text-left overflow-hidden">
       {/* Chevron Left Button */}
       <button
         onClick={prevSlide}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white hover:bg-opacity-80 transition"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-80 transition z-10"
       >
         <FaChevronLeft size={24} />
       </button>
 
       {/* Carousel Content */}
-      <div className="p-4">{slides[currentIndex]}</div>
+      <div className="p-6 mx-10">{slides[currentIndex]}</div>
 
       {/* Chevron Right Button */}
       <button
         onClick={nextSlide}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white hover:bg-opacity-80 transition"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-80 transition z-10"
       >
         <FaChevronRight size={24} />
       </button>
