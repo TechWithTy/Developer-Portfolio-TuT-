@@ -1,6 +1,6 @@
 "use client";
 
-const LoadingScreen = ({ title = "Loading..." }) => {
+const CssLoadingScreen = ({ title = "Loading..." }) => {
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-black text-white">
       <div className="loader"></div>
@@ -9,4 +9,4 @@ const LoadingScreen = ({ title = "Loading..." }) => {
   );
 };
 
-export default LoadingScreen;
+export default CssLoadingScreen;

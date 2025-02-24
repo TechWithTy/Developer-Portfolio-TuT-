@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AnimationLottie from "./animation-lottie";
+import AnimationLottie from "../animation-lottie";
 
-const LoadingScreen = ({ title = "Loading..." }) => {
+const LottieLoadingScreen = ({ title = "Loading..." }) => {
   const [animationData, setAnimationData] = useState(null);
 
   useEffect(() => {
@@ -27,4 +27,4 @@ const LoadingScreen = ({ title = "Loading..." }) => {
   );
 };
 
-export default LoadingScreen;
+export default LottieLoadingScreen;
