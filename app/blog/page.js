@@ -54,7 +54,12 @@ export default function Page() {
         {filteredBlogs.length > 0 ? (
           filteredBlogs.map((blog, i) => <BlogCard blog={blog} key={i} />)
         ) : (
-          <p className="text-center text-white">No blogs found.</p>
+          // ✅ Make sure the loader takes the full width of the grid and centers itself
+          <div className="col-span-full flex items-center justify-center">
+            <div className="w-64 h-64 flex items-center justify-center">
+              <ScopedCssLoadingScreen title="Fetching Data..." size={80} />
+            </div>
+          </div>
         )}
       </div>
     </div>
