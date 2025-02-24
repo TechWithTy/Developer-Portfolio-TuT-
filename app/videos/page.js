@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { fetchYoutubeVideos } from "@/utils/fetchYoutubeVideos";
 import YouTubeCard from "../components/homepage/videos/ytCard";
+import ScopedCssLoadingScreen from "../components/helper/loaders/scopedCssLoading";
 export default function VideosPage() {
   const [videos, setVideos] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // ✅ Search state

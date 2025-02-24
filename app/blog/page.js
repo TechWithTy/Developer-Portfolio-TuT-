@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { fetchBlogs } from "@/utils/getBlogs";
 import BlogCard from "@/app/components/homepage/blog/blog-card";
-
+import ScopedCssLoadingScreen from "../components/helper/loaders/scopedCssLoading";
 export default function Page() {
   const [blogs, setBlogs] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // ✅ Search state

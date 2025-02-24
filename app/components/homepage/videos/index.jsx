@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { fetchYoutubeVideos } from "@/utils/fetchYoutubeVideos"; // ✅ Import utility function
 import YouTubeCard from "./ytCard";
+import ScopedCssLoadingScreen from "../../helper/loaders/scopedCssLoading";
 function Videos() {
   const [videos, setVideos] = useState([]);
 
