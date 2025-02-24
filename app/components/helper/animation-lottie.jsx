@@ -8,7 +8,7 @@ const AnimationLottie = ({ animationPath, width }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      import("../../assets/lottie/space-loading.json").then((data) =>
+      import(animationPath).then((data) =>
         setAnimationData(data.default)
       );
     }

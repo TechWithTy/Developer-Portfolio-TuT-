@@ -51,7 +51,7 @@ export default function VideosPage() {
             <YouTubeCard video={video} key={i} />
           ))
         ) : (
-          {/* <LoadingScreen title ="Loading Videos .."/> */}
+          <LoadingScreen title ="Loading Videos .."/>
         )}
       </div>
     </div>

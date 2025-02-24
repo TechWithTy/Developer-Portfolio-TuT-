@@ -50,7 +50,7 @@ function Videos() {
             .slice(0, 6)
             .map((video, i) => <YouTubeCard video={video} key={i} />)
         ) : (
-         {/* <LoadingScreen title="Loading Videos..." /> */}
+          <LoadingScreen title="Loading Videos..." />
         )}
       </div>
 

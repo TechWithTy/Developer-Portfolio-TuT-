@@ -50,7 +50,7 @@ export default function VideosPage() {
         {filteredVideos.length > 0 ? (
           filteredVideos.map((video, i) => <YouTubeCard video={video} key={i} />)
         ) : (
-          {/* <LoadingScreen title="Loading Videos..." /> */}
+          <LoadingScreen title="Loading Videos..." />
         )}
       </div>
     </div>
