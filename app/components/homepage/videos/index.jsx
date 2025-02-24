@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { fetchYoutubeVideos } from "@/utils/fetchYoutubeVideos"; // ✅ Import utility function
 import YouTubeCard from "./ytCard";
+import LoadingScreen from "../../helper/loading";
 function Videos() {
   const [videos, setVideos] = useState([]);
 
@@ -17,7 +18,10 @@ function Videos() {
   }, []);
 
   return (
-    <div id="videos" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+    <div
+      id="videos"
+      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
+    >
       {/* Blurred Background Effect */}
       <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl opacity-20"></div>
 
@@ -42,9 +46,11 @@ function Videos() {
       {/* ✅ Display YouTube Videos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
         {videos.length > 0 ? (
-          videos.slice(0, 6).map((video, i) => <YouTubeCard video={video} key={i} />)
+          videos
+            .slice(0, 6)
+            .map((video, i) => <YouTubeCard video={video} key={i} />)
         ) : (
-          <p className="text-center text-white">No videos available.</p>
+          <LoadingScreen title="Loading Videos..." />
         )}
       </div>
 

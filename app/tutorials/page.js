@@ -47,9 +47,11 @@ export default function VideosPage() {
       {/* ✅ Grid of Videos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
         {filteredVideos.length > 0 ? (
-          filteredVideos.map((video, i) => <YouTubeCard video={video} key={i} />)
+          filteredVideos.map((video, i) => (
+            <YouTubeCard video={video} key={i} />
+          ))
         ) : (
-          <p className="text-center text-white">No videos found.</p>
+          <LoadingScreen title ="Loading Videos .."/>
         )}
       </div>
     </div>

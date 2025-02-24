@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { fetchBlogs } from "@/utils/getBlogs";
 import BlogCard from "@/app/components/homepage/blog/blog-card";
-
+import LoadingScreen from "../components/helper/loading";
 export default function Page() {
   const [blogs, setBlogs] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // ✅ Search state
@@ -54,7 +54,7 @@ export default function Page() {
         {filteredBlogs.length > 0 ? (
           filteredBlogs.map((blog, i) => <BlogCard blog={blog} key={i} />)
         ) : (
-          <p className="text-center text-white">No blogs found.</p>
+          <LoadingScreen title={"Loading Blogs..."} /> 
         )}
       </div>
     </div>

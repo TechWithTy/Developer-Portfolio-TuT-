@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { fetchYoutubeVideos } from "@/utils/fetchYoutubeVideos";
 import YouTubeCard from "../components/homepage/videos/ytCard";
+import LoadingScreen from "../components/helper/loading";
 export default function VideosPage() {
   const [videos, setVideos] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // ✅ Search state
@@ -49,7 +50,7 @@ export default function VideosPage() {
         {filteredVideos.length > 0 ? (
           filteredVideos.map((video, i) => <YouTubeCard video={video} key={i} />)
         ) : (
-          <p className="text-center text-white">No videos found.</p>
+          <LoadingScreen title="Loading Videos..." />
         )}
       </div>
     </div>
