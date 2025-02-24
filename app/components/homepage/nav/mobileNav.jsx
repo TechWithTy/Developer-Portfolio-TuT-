@@ -7,7 +7,8 @@ function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,50 +21,67 @@ function MobileNavbar() {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 w-full bg-opacity-80 backdrop-blur-md z-[1000] transition-all duration-300 ${
-          isSticky ? "shadow-lg" : ""
+      {/* Wrapper to prevent content from being covered */}
+      <div className={`${isSticky ? "" : "relative"} w-full`}>
+        {/* Navbar */}
+        <nav
+          className={`w-full bg-opacity-80 backdrop-blur-md z-[1000] transition-all duration-300 ${
+            isSticky ? "fixed top-0 left-0 shadow-lg" : "relative"
+          }`}
+        >
+          <div className="flex items-center justify-between py-5 px-4">
+            <Link href="/" className="text-[#16f2b3] text-3xl font-bold">
+              Tyrique Daniel
+            </Link>
+
+            <button onClick={toggleMenu} className="text-white focus:outline-none">
+              {isOpen ? <HiX size={28} /> : <HiOutlineMenu size={28} />}
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 bg-black  z-[1001] transition-opacity duration-300 ${
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div className="flex items-center justify-between py-5 px-4">
-          <Link href="/" className="text-[#16f2b3] text-3xl font-bold">
-            Tyrique Daniel
-          </Link>
+        {/* Close Button */}
+        <button
+          onClick={closeMenu}
+          className="absolute top-5 right-5 text-white text-3xl hover:text-pink-600 transition"
+        >
+          <HiX size={32} />
+        </button>
 
-          <button
-            onClick={toggleMenu}
-            className="text-white focus:outline-none"
-          >
-            {isOpen ? <HiX size={28} /> : <HiOutlineMenu size={28} />}
-          </button>
-        </div>
-      </nav>
-
-      {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-[1001]">
-          <ul className="flex flex-col items-center py-8 space-y-4">
-            {[
-              "ABOUT",
-              "EXPERIENCE",
-              "SKILLS",
-              "EDUCATION",
-              "PROJECTS",
-              "BLOGS",
-              "TUTORIALS",
-            ].map((item) => (
-              <li key={item}>
-                <Link
-                  href={`/#${item.toLowerCase()}`}
-                  className="text-white text-lg hover:text-pink-600"
-                  onClick={toggleMenu}
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+        {/* Navigation Links */}
+        <ul className="flex flex-col items-center justify-center h-full space-y-6">
+          {[
+            "ABOUT",
+            "EXPERIENCE",
+            "SKILLS",
+            "EDUCATION",
+            "PROJECTS",
+            "BLOG",
+            "TUTORIALS",
+          ].map((item) => (
+            <li key={item}>
+              <Link
+                href={
+                  item === "BLOG" || item === "TUTORIALS"
+                    ? `/${item.toLowerCase()}`
+                    : `/#${item.toLowerCase()}`
+                }
+                className="text-white text-2xl font-medium hover:text-[#c769a8] transition"
+                onClick={closeMenu} // Closes the menu when clicking a link
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

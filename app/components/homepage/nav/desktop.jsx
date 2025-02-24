@@ -10,11 +10,11 @@ function DesktopNavbar() {
         </Link>
 
         <ul className="hidden md:flex space-x-4">
-          {["ABOUT", "EXPERIENCE", "SKILLS", "EDUCATION", "PROJECTS", "BLOGS", "TUTORIALS"].map(
+          {["ABOUT", "EXPERIENCE", "SKILLS", "EDUCATION", "PROJECTS", "BLOG", "TUTORIALS"].map(
             (item) => (
               <li key={item}>
                 <Link
-                  href={item === "BLOGS" || item === "TUTORIALS" ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`}
+                  href={item === "BLOG" || item === "TUTORIALS" ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`}
                   className="text-sm text-white transition-colors duration-300 hover:text-pink-600"
                 >
                   {item}
