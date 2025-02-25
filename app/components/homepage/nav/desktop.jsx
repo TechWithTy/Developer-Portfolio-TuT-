@@ -6,7 +6,7 @@ function DesktopNavbar() {
     <nav className="bg-transparent w-full">
       <div className="flex items-center justify-between py-5 px-4">
         <Link href="/" className="text-[#16f2b3] text-3xl font-bold">
-          Tyrique Daniel DS
+          Tyrique Daniel 
         </Link>
 
         <ul className="hidden md:flex space-x-4">

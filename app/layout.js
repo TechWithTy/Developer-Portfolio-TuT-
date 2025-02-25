@@ -9,11 +9,11 @@ import CalendlyPopup from "./components/helper/calendlyPopup"; // Import Calendl
 import ClientOnly from "./components/helper/clientwrapper";
 import "./css/card.scss";
 import "./css/globals.scss";
-
+import { personalData } from "@/utils/data/personal-data";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio ofTyrique Daniel - Full Stack AI Engineer",
+  title: `${personalData.name} - ${personalData.designation}`,
   description: `Innovative Senior Full Stack AI Engineer with 8+ years of experience designing and deploying scalable AI applications.
     Expertise in TypeScript, JavaScript, React/Next.js, Python, Golang, and cloud platforms like Google Cloud and AWS. Proven
     track record in building high-performance web applications, integrating AI models, and establishing robust CI/CD
