@@ -61,14 +61,39 @@ function Experience() {
       </div>
 
       {/* Resume Link */}
-      <div className="flex justify-center mt-4">
-        <a href={personalData.resume} target="_blank" rel="noopener noreferrer">
-          <button className="px-6 py-2 text-white font-medium bg-[#c769a8] rounded-lg hover:bg-[#b05794] transition-all duration-300">
-            Get My Resume
-          </button>
-        </a>
-      </div>
+      <div class="buttons">
+        <button class="blob-btn">
+          Get My Resume
+          <span class="blob-btn__inner">
+            <span class="blob-btn__blobs">
+              <span class="blob-btn__blob"></span>
+              <span class="blob-btn__blob"></span>
+              <span class="blob-btn__blob"></span>
+              <span class="blob-btn__blob"></span>
+            </span>
+          </span>
+        </button>
+        <br />
 
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur
+                in="SourceGraphic"
+                result="blur"
+                stdDeviation="10"
+              ></feGaussianBlur>
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                result="goo"
+              ></feColorMatrix>
+              <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+            </filter>
+          </defs>
+        </svg>
+      </div>
       <div className="py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Animated Image */}
