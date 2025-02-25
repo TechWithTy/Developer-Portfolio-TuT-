@@ -10,6 +10,7 @@ import GlowCard from "../../helper/glow-card";
 import { personalData } from "@/utils/data/personal-data";
 function Experience() {
   const [showAll, setShowAll] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const experienceRef = useRef(null);
   const lastExperienceRef = useRef(null);
 
@@ -61,39 +62,50 @@ function Experience() {
       </div>
 
       {/* Resume Link */}
-      <div class="buttons">
-        <button class="blob-btn">
-          Get My Resume
-          <span class="blob-btn__inner">
-            <span class="blob-btn__blobs">
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
+      <div className="buttons">
+        <a
+          href={personalData.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <button className="blob-btn">
+            Get My Resume
+            <span className="blob-btn__inner">
+              <span className="blob-btn__blobs">
+                <span className="blob-btn__blob"></span>
+                <span className="blob-btn__blob"></span>
+                <span className="blob-btn__blob"></span>
+                <span className="blob-btn__blob"></span>
+              </span>
             </span>
-          </span>
-        </button>
-        <br />
+          </button>
+        </a>
 
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur
-                in="SourceGraphic"
-                result="blur"
-                stdDeviation="10"
-              ></feGaussianBlur>
-              <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
-                result="goo"
-              ></feColorMatrix>
-              <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
-            </filter>
-          </defs>
-        </svg>
+        {/* Only show SVG when hovered */}
+        {isHovered && (
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  result="blur"
+                  stdDeviation="10"
+                ></feGaussianBlur>
+                <feColorMatrix
+                  in="blur"
+                  mode="matrix"
+                  values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                  result="goo"
+                ></feColorMatrix>
+                <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+              </filter>
+            </defs>
+          </svg>
+        )}
       </div>
+
       <div className="py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Animated Image */}
