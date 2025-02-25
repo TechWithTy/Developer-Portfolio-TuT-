@@ -63,7 +63,10 @@ function Videos() {
       {/* Mobile Carousel */}
       <div className="block lg:hidden">
         {videos.length > 0 ? (
-          <CarouselHelper isBottom>
+          <CarouselHelper
+            isBottom={true}
+            nextSlideTitles={videos.map((video) => video.title)}
+          >
             {videos.map((video, i) => (
               <YouTubeCard video={video} key={i} />
             ))}

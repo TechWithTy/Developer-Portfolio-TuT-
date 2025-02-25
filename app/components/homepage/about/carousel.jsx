@@ -1,10 +1,12 @@
-'use client'
+"use client";
 
 import { personalData } from "@/utils/data/personal-data";
 import CarouselHelper from "../../helper/carouselHelper";
 const AboutCarousel = () => {
   return (
-    <CarouselHelper>
+    <CarouselHelper
+      nextSlideTitles={personalData.description.map((desc) => desc.title)}
+    >
       {personalData.description.map((desc, index) => (
         <div className="text-center" key={index}>
           <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">

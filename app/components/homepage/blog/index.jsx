@@ -60,7 +60,10 @@ function Blog() {
       {/* Mobile Carousel */}
       <div className="block lg:hidden">
         {blogs.length > 0 ? (
-          <CarouselHelper isBottom={true}>
+          <CarouselHelper
+            isBottom={true}
+            nextSlideTitles={blogs.map((blog) => blog.title)}
+          >
             {blogs.map((blog, i) => (
               <BlogCard blog={blog} key={i} />
             ))}
