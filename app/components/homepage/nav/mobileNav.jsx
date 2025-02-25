@@ -12,7 +12,7 @@ function MobileNavbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 200); // Becomes sticky after 200px scroll
+      setIsSticky(window.scrollY > 200);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -21,7 +21,7 @@ function MobileNavbar() {
 
   return (
     <>
-      {/* Wrapper to prevent content from being covered */}
+      {/* Navbar Wrapper */}
       <div className={`${isSticky ? "" : "relative"} w-full`}>
         {/* Navbar */}
         <nav
@@ -41,10 +41,10 @@ function MobileNavbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Slides Up */}
       <div
-        className={`fixed inset-0 bg-black  z-[1001] transition-opacity duration-300 ${
-          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        className={`fixed bottom-0 left-0 w-full h-full bg-black z-[1001] transition-transform duration-300 ${
+          isOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
         {/* Close Button */}
