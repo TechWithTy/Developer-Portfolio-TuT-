@@ -67,7 +67,9 @@ function ContactForm() {
 
         <div className="mt-6 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <label className="text-base">Your Name: </label>
+            <label className="text-base">
+              Your Name<span className="hidden md:inline">:</span>
+            </label>
             <input
               className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
               type="text"
@@ -82,7 +84,9 @@ function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-base">Your Email: </label>
+          <label className="text-base">
+              Email<span className="hidden md:inline">:</span>
+            </label>
             <input
               className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
               type="email"
@@ -105,7 +109,9 @@ function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-base">Your Message: </label>
+          <label className="text-base">
+              Message<span className="hidden md:inline">:</span>
+            </label>
             <textarea
               className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
               maxLength="500"
@@ -139,7 +145,6 @@ function ContactForm() {
                 </span>
               )}
             </button>
-          
           </div>
         </div>
       </div>
