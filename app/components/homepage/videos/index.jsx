@@ -1,4 +1,4 @@
-"use client"; // ✅ Run fetch in the browser
+"use client"; // ✅ Ensures fetching happens in the browser
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -6,13 +6,15 @@ import { FaArrowRight } from "react-icons/fa";
 import { fetchYoutubeVideos } from "@/utils/fetchYoutubeVideos"; // ✅ Import utility function
 import YouTubeCard from "./ytCard";
 import ScopedCssLoadingScreen from "../../helper/loaders/scopedCssLoading";
+import CarouselHelper from "../../helper/carouselHelper";
+
 function Videos() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     async function fetchVideosScoped() {
       const data = await fetchYoutubeVideos();
-      setVideos(data);
+      setVideos(data.slice(0, 6)); // ✅ Only keep the first 6 videos
     }
     fetchVideosScoped();
   }, []);
@@ -32,29 +34,43 @@ function Videos() {
         </div>
       </div>
 
-      {/* Section Title */}
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Videos
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+      {/* Mobile Header */}
+      <div className="block lg:hidden">
+        <div className="flex justify-center my-5 lg:py-8">
+          <div className="flex items-center">
+            <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+            <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
+              Videos
+            </span>
+            <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+          </div>
         </div>
       </div>
 
-      {/* ✅ Display YouTube Videos */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
+      {/* Desktop Grid */}
+      <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 lg:gap-8 xl:gap-10">
         {videos.length > 0 ? (
-          videos
-            .slice(0, 6)
-            .map((video, i) => <YouTubeCard video={video} key={i} />)
+          videos.map((video, i) => <YouTubeCard video={video} key={i} />)
         ) : (
-          // ✅ Make sure the loader takes the full width of the grid and centers itself
           <div className="col-span-full flex items-center justify-center">
             <div className="w-64 h-64 flex items-center justify-center">
               <ScopedCssLoadingScreen title="Fetching Data..." size={80} />
             </div>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Carousel */}
+      <div className="block lg:hidden">
+        {videos.length > 0 ? (
+          <CarouselHelper isBottom>
+            {videos.map((video, i) => (
+              <YouTubeCard video={video} key={i} />
+            ))}
+          </CarouselHelper>
+        ) : (
+          <div className="flex justify-center items-center my-5">
+            <ScopedCssLoadingScreen title="Fetching Data..." size={80} />
           </div>
         )}
       </div>
