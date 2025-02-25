@@ -1,11 +1,25 @@
 "use client";
 
-import { useState, Children } from "react";
+import { useState, useEffect, Children } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const CarouselHelper = ({ children, isBottom = false }) => {
+const CarouselHelper = ({ children, isBottom: isBottomProp = false }) => {
   const slides = Children.toArray(children);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isBottom, setIsBottom] = useState(isBottomProp);
+
+  // Detect mobile screen size on mount
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsBottom(window.innerWidth < 768); // Adjust threshold as needed
+    };
+
+    checkIfMobile(); // Run once on mount
+
+    // Optional: Listen for window resize events (if dynamic responsiveness is needed)
+    window.addEventListener("resize", checkIfMobile);
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -27,7 +41,7 @@ const CarouselHelper = ({ children, isBottom = false }) => {
       {/* Navigation Buttons - Side or Bottom */}
       {isBottom ? (
         // ✅ Buttons on the bottom
-        <div className="flex justify-center gap-4 ">
+        <div className="flex justify-center gap-4">
           <button
             onClick={prevSlide}
             className="p-2 bg-violet-500 rounded-md hover:bg-violet-600 transition-all duration-300"
