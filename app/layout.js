@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/helper/scroll-to-top";
 import Navbar from "./components/navbar";
-import CalPopup from "./components/helper/CalPopup"; // Import Calendly Widget
+import CalPopup from "./components/helper/calPopup"; // Import Calendly Widget
 import ClientOnly from "./components/helper/clientwrapper";
 
 import { personalData } from "@/utils/data/personal-data";
