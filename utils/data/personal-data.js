@@ -45,5 +45,5 @@ export const personalData = {
   devUsername: "techwithty",
   resume:
     "https://www.canva.com/design/DAGOXaDGgeU/5RYzYxTqEjyIZfm24lZSlA/view?utm_content=DAGOXaDGgeU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0430b9c87e",
-  calendly: "https://calendly.com/-tyrique/gtknme", // Added from resume
+  initial_call: "https://cal.com/ty-dev/get-to-know-me", // Added from resume
 };
