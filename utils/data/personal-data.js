@@ -1,4 +1,3 @@
-
 const developerProfileSections = [
   {
     title: "Who Am I?",
@@ -31,8 +30,7 @@ export const personalData = {
   name: "Tyrique Daniel",
   profile: "/profile.png",
   designation: "Senior Full Stack AI Engineer",
-  description:
-  developerProfileSections,
+  description: developerProfileSections,
   email: "tyrique1.daniel@gmail.com",
   phone: "628-303-8011",
   address: "Denver, CO",
@@ -45,5 +43,6 @@ export const personalData = {
   devUsername: "techwithty",
   resume:
     "https://www.canva.com/design/DAGOXaDGgeU/5RYzYxTqEjyIZfm24lZSlA/view?utm_content=DAGOXaDGgeU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0430b9c87e",
-  initial_call: "https://cal.com/ty-dev/get-to-know-me", // Added from resume
+  initial_call: "ty-dev/get-to-know-me", // Added from resume\
+  technicalInterview: "ty-dev/technical-interview",
 };

@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           {/* Wrap children in client component */} <ScrollToTop />
         </main>
         <Footer />
-        <CalPopup calendarLink={personalData.initial_call} />
+        <CalPopup initialCallLink={personalData.initial_call} technicalInterviewLink={personalData.technicalInterview} />
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
     </html>
