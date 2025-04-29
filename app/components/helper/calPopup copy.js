@@ -36,7 +36,7 @@ const CalPopup = () => {
         <span role="img" aria-label="calendar">
           📅
         </span>
-        {isMobile ? "Book Call" : "Schedule Time To Talk"}
+        {isMobile ? "Book Time" : "Schedule Time To Talk"}
       </button>
 
       {showOptions && (
