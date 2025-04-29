@@ -15,11 +15,19 @@ const CalPopup = () => {
   useCal();
 
   useEffect(() => {
+    function checkHashForSchedule() {
+      if (window.location.hash === "#schedule") {
+        setShowOptions(true);
+      }
+    }
+
     if (typeof window !== "undefined") {
-      const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-      checkMobile();
-      window.addEventListener("resize", checkMobile);
-      return () => window.removeEventListener("resize", checkMobile);
+      checkHashForSchedule();
+      window.addEventListener("hashchange", checkHashForSchedule);
+
+      // Cleanup event listener on unmount
+      return () =>
+        window.removeEventListener("hashchange", checkHashForSchedule);
     }
   }, []);
 
